@@ -34,7 +34,7 @@ class _CancelTaskScreenState extends State<CancelTaskScreen> {
 
     List<TaskModel> list =[];
     if(response.isSuccess){
-      for(Map<String,dynamic> jsonData in response.responseData['data']){//jsondata holo model er ar responseData holo api taskCount er Data r bitorer ta
+      for(Map<String,dynamic> jsonData in response.responseData['data']){
         list.add(TaskModel.fromJson(jsonData));
       }
 
