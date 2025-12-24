@@ -8,7 +8,7 @@ class TaskCard extends StatefulWidget {
   const TaskCard({
     super.key, required this.taskModel, required this.cardColor, required this.refreshParent,
   });
-  //status gula nise bcz  nische je button ache oigula page onujayi ekek rokom
+  
   final  TaskModel taskModel;
   final Color cardColor;
  final VoidCallback refreshParent;
@@ -22,17 +22,17 @@ class _TaskCardState extends State<TaskCard> {
   Widget build(BuildContext context) {
 
 
-    //Api//eta nisi screen e je Showdialog e page ta ashe oitar maddome onno page e select er sath sathe jate jai
+    
     bool _changeStatusInProgress = false;
     bool _deleteLoading = false;
 
 
-    Future<void>_changeStatus(String status) async {//ei status ta user ke updat korbe// parameter use korsi bcz urls e sobgular jonno dynamic urls use korsi tai just parameter call kore sob kichu korbo
+    Future<void>_changeStatus(String status) async { 
       _changeStatusInProgress =true;
 
       ///Api///
       final ApiResponse response = await ApiCaller.getRequest(
-        url: Urls.changeStatus(widget.taskModel.id, status),//taskid ta taskmodel er id theke nise//taskmodel er id thekei astase
+        url: Urls.changeStatus(widget.taskModel.id, status),
       );
       _changeStatusInProgress = false;
       setState(() {
@@ -64,7 +64,7 @@ class _TaskCardState extends State<TaskCard> {
     }
 
 
-//page ashbe and 4 ta page er name ashbe
+
     void _showChangeStatusDialog(){
       showDialog(context: context, builder:(context){
         return AlertDialog(
