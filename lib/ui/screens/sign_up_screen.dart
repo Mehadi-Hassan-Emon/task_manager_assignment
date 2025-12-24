@@ -17,11 +17,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _fromKey = GlobalKey<
-      FormState>(); //user thik thak moto input nitase kina ta check and kono kichu khali ache kina tar jonno
+      FormState>(); 
 
 
-  bool _signUpProgress = false; //kaj korteche kina ba loading kina
-
+  bool _signUpProgress = false; 
   _clearTextField() {
     _emailController.clear();
     _firstNameController.clear();
@@ -33,8 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ///Api///
   Future<void> _signUp() async {
     setState(() {
-      _signUpProgress = true; //api er bitore true mane kaj kortache
-
+      _signUpProgress = true; 
     });
 
     Map<String, dynamic>requestBody = {
@@ -50,10 +48,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
        body: requestBody,
     );
     setState(() {
-      _signUpProgress = false; //api er bahire sesh tai false kore dibo
+      _signUpProgress = false; 
 
     });
-    //success hole msg ta dekhabe eita alada concept
+    
     if (response.isSuccess) {
       _clearTextField();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -63,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
 
       );
-      // ek email 2bar submit dile eita dekhabe user ke
+
     }
     String errorMessage;
     if (response.responseData is Map<String, dynamic>) {
@@ -100,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: Theme
                           .of(context)
                           .textTheme
-                          .titleLarge, //font boro kora// (TextTheme class) website e ache kibabe text boro kora jai
+                          .titleLarge, 
                     ),
                     const SizedBox(height: 10,),
                     TextFormField(
@@ -110,17 +108,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       ),
                       validator: (
-                          String ? value) { //validator use kore input check kore null mane khali kina
+                          String ? value) { 
                         if (value == null || value.isEmpty) {
                           return 'please enter your email';
                         }
                         final emailRegExp = RegExp(
                             r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
-                        ///email e eigula thaka lagbe
+                        
 
                         if (!emailRegExp.hasMatch(
-                            value)) { // emailRegExp match nah kore
+                            value)) { 
                           return 'Please enter valid email';
                         }
                         return null;
@@ -133,14 +131,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: 'First Name',
                         ),
                         validator: (
-                            String ? value) { //validator use kore input check kore null mane khali kina
+                            String ? value) { 
                           if (value == null || value.isEmpty) {
                             return 'please enter your first name';
                           }
                           if (value
                               .trim()
                               .length <
-                              2) { //trim mane word e space thakle ta remove kore dei
+                              2) { 
                             return 'First name must be at least 2 charecter';
                           }
                           return null;
@@ -153,14 +151,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: 'Last Name',
                         ),
                         validator: (
-                            String ? value) { //validator use kore input check kore null mane khali kina
+                            String ? value) { 
                           if (value == null || value.isEmpty) {
                             return 'please enter your last name';
                           }
                           if (value
                               .trim()
                               .length <
-                              2) { //trim mane word e space thakle ta remove kore dei
+                              2) { 
                             return 'last name must be at least 2 charecter';
                           }
                           return null;
@@ -173,14 +171,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: 'Mobile',
                         ),
                         validator: (
-                            String ? value) { //validator use kore input check kore null mane khali kina
+                            String ? value) { 
                           if (value == null || value.isEmpty) {
                             return 'please enter your mobile number';
                           }
                           if (value
                               .trim()
                               .length !=
-                              11) { //trim mane word e space thakle ta remove kore dei
+                              11) {
                             return 'Enter valid phone Number';
                           }
                           return null;
@@ -194,12 +192,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         obscureText: true,
                         validator: (
-                            String ? value) { //validator use kore input check kore null mane khali kina
+                            String ? value) { 
                           if (value == null || value.isEmpty) {
                             return 'please enter your password';
                           }
                           if (value.length <=
-                              6) { //trim mane word e space thakle ta remove kore dei
+                              6) { 
                             return 'Enter password more than 6';
                           }
                           return null;
@@ -207,12 +205,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const SizedBox(height: 16,),
 
-                    Visibility(//visibility mane ekta emial diye submit dile jate arekbar submit nah dite pare tai signup success dekhar por loading ashar jonno
+                    Visibility(
                       visible: !_signUpProgress,
                       replacement: Center(child: CircularProgressIndicator()),
 
                       child: FilledButton(onPressed: () {
-                        ///Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordVerifyOtpScreen()));
+                      
                         if (_fromKey.currentState!.validate()) {
                           _signUp();
                         }
@@ -224,7 +222,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Center(
                       child: Column(
                         children: [
-                          RichText( //multiple text and text color neya jai
+                          RichText( 
                               text: TextSpan(
                                   text: ' Already Have Account',
                                   children: [
@@ -251,7 +249,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-  //controller gula abr jate khali ba null thake
+ 
 @override
   void dispose() {
   _emailController.dispose();
