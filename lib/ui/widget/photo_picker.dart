@@ -5,8 +5,8 @@ class photo_picker extends StatelessWidget {
     super.key, required this.ontap, this.selectedPhoto,
   });
 
-  final VoidCallback ontap;   //parameter use bcz image condition chalabe
-  final XFile ? selectedPhoto;   //xfile imgage take hold korbe
+  final VoidCallback ontap;   
+  final XFile ? selectedPhoto;   
 
   @override
   Widget build(BuildContext context) {
