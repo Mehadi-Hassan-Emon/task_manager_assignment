@@ -8,14 +8,14 @@ import 'package:task_manager/ui/controller/auth_controller.dart';
 import 'package:task_manager/ui/screens/login_page.dart';
 
 
-////api e joto doroner kaj ache sob ei 2 ta dore call korle hoye jabe eta          //// but ager project e alada kore dekhano hoiselo
 
-///api call kortase
+
+
 class ApiCaller{
 
   static final Logger _logger  = Logger();
 
-   //logger package use korsi and eta use hoi bcz error gula dekhar jonno
+   
 
 
    static Future<ApiResponse>getRequest({required String url, }) async {
@@ -25,12 +25,12 @@ class ApiCaller{
       _logRequest(url);//logger
 
       Response  response = await get(uri,headers: {
-        'token': AuthController.accessToken??''///token ta add korsi ekhane jate login er por token ta add new task e ashe //login er token ta authcontroller e save rakhsi oikhan theke access nicci
+        'token': AuthController.accessToken??''
       });
 
       _logResponse(url,response);//logger
 
-      final int statusCode = response.statusCode;//status code check korar jonno
+      final int statusCode = response.statusCode;
       final decodedData = jsonDecode(response.body);
 
       if(statusCode == 200){
@@ -39,9 +39,9 @@ class ApiCaller{
             responseCode:statusCode,
             isSuccess: true,
             responseData: decodedData
-        );//statuscode mane 200,,isSuccess mane 200 hole condition ta true,,get e decode korte hoi jsoncode code ke
-      }else if(statusCode==401 ){//401 ashle je anauthorized msg ashe ta remove kortasi
-        await _movetoLogin();//401 hoile login page e move korbe
+        );
+      }else if(statusCode==401 ){
+        await _movetoLogin();
         return ApiResponse(
             responseCode:-1,
             isSuccess: false,
@@ -53,7 +53,7 @@ class ApiCaller{
             responseCode:statusCode,
             isSuccess: false,
             responseData:decodedData
-        );//success nah hole eita hobe
+        );
       }
     }catch(e){
       return ApiResponse(
@@ -61,13 +61,13 @@ class ApiCaller{
           isSuccess: false,
           responseData: null,
           errorMessage: e.toString()
-      );//jodi api response nah ashe//try catch e check korbo
+      );
     }
   }
 
 
   //post//data paoya
- static Future<ApiResponse>postRequest({required String url, Map<String,dynamic>?body,}) async {//post e url er sathe data o lageh bcz post e data pass korte hoi
+ static Future<ApiResponse>postRequest({required String url, Map<String,dynamic>?body,}) async {
     try{
       Uri uri = Uri.parse(url);
 
@@ -75,10 +75,10 @@ class ApiCaller{
 
       Response  response = await post(uri,
         headers: {
-          'Accept':'application/json',//postman e post theke
+          'Accept':'application/json',
           'Content-Type' : 'application/json',
 
-              'token': AuthController.accessToken??''//login er token ta onno api access paoyar jonno ekhane o add kora lagbe
+              'token': AuthController.accessToken??''
 
 
         },
@@ -86,14 +86,14 @@ class ApiCaller{
       );
       _logResponse(url, response);//logger
 
-      final int statusCode = response.statusCode;//status code check korar jonno
+      final int statusCode = response.statusCode;
       final decodedData = jsonDecode(response.body);
 
       if(statusCode == 200 || statusCode == 201 ){
 
-        return ApiResponse(responseCode:statusCode, isSuccess: true, responseData: decodedData);//statuscode mane 200,,isSuccess mane 200 hole condition ta true,,get e decode korte hoi jsoncode code ke
-      } else if(statusCode==401 ){//401 ashle je anauthorized msg ashe ta remove kortasi
-        await _movetoLogin();//401 hoile login page e move korbe
+        return ApiResponse(responseCode:statusCode, isSuccess: true, responseData: decodedData);
+      } else if(statusCode==401 ){
+        await _movetoLogin();
         return ApiResponse(
             responseCode:-1,
             isSuccess: false,
@@ -102,14 +102,14 @@ class ApiCaller{
       }
 
       else{
-        return ApiResponse(responseCode:statusCode, isSuccess: false, responseData:decodedData );//success nah hole eita hobe
+        return ApiResponse(responseCode:statusCode, isSuccess: false, responseData:decodedData );
       }
     }catch(e){
-      return ApiResponse(responseCode:-1, isSuccess: false, responseData: null,errorMessage: e.toString());//jodi api response nah ashe//try catch e check korbo
+      return ApiResponse(responseCode:-1, isSuccess: false, responseData: null,errorMessage: e.toString());
     }
   }
 
-  //request print logger
+  
   static void _logRequest(String Url,{Map<String,dynamic>? body}){
      _logger.i(
        'URL => $Url\n'
@@ -118,7 +118,7 @@ class ApiCaller{
      );
   }
 
-  //response print logger
+  
 
   static void _logResponse(String url, Response response) {
     _logger.i(
@@ -127,10 +127,10 @@ class ApiCaller{
             'Response Body => ${response.body}\n'
     );
   }
-  //401 er jonno check
+ 
   static Future<void>_movetoLogin()async{
-    await AuthController.clearUserData();//token nai but user er data thakle ta clean korbo
-   Navigator.pushNamedAndRemoveUntil(TaskManager.navigator.currentContext!,'/Login', (predicate)=>false);//context ta nah ashai amra ap.dart e navigator state make kore ekhane ansi
+    await AuthController.clearUserData();
+   Navigator.pushNamedAndRemoveUntil(TaskManager.navigator.currentContext!,'/Login', (predicate)=>false);
    }
 
 
@@ -138,7 +138,7 @@ class ApiCaller{
 
 
 
-class ApiResponse{//api call korle ei format e data ta pabo
+class ApiResponse{
   final int responseCode;
   final dynamic responseData;
   final bool isSuccess;
