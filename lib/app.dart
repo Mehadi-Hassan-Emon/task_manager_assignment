@@ -7,13 +7,13 @@ import 'package:task_manager/ui/screens/update_profile_screen.dart';
 class TaskManager extends StatelessWidget {
   const TaskManager({super.key});
 
-  static GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();//globalkey api caller page e access nise simple eta
+  static GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorSchemeSeed: Colors.green,//theme er main part gula green hobe ,,,sob page e jate alada kore green korte na hoi tai app.dart eikhane green kore dise ageh theke
+        colorSchemeSeed: Colors.green,
         textTheme: TextTheme(
           titleLarge: TextStyle(
             fontSize: 20,
