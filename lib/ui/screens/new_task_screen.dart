@@ -21,7 +21,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   bool _getTaskStatusCountProgress = false;
   bool _getNewTaskProgress = false;
 
-  List<TaskStatusCountModel> _taskStatusCountList = [];//mainly new task er api te list er bitore data dise tai list er bitorei model gula rakhtase
+  List<TaskStatusCountModel> _taskStatusCountList = [];
   List<TaskModel> _newTaskList = [];
 
 
@@ -41,7 +41,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
 
     List<TaskStatusCountModel> list =[];
     if(response.isSuccess){
-      for(Map<String,dynamic> jsonData in response.responseData['data']){//jsondata holo model er ar responseData holo api taskCount er Data r bitorer ta
+      for(Map<String,dynamic> jsonData in response.responseData['data']){
         list.add(TaskStatusCountModel.fromJson(jsonData));
       }
     }else{
@@ -73,7 +73,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
 
     List<TaskModel> list =[];
     if(response.isSuccess){
-      for(Map<String,dynamic> jsonData in response.responseData['data']){//jsondata holo model er ar responseData holo api taskCount er Data r bitorer ta
+      for(Map<String,dynamic> jsonData in response.responseData['data']){
         list.add(TaskModel.fromJson(jsonData));
       }
 
@@ -96,7 +96,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: TMAppBar(),//ekhane ekta widget make korse karon hoiche next sob page e profile same
+      appBar: TMAppBar(),
       body: Column(
         children: [
           SizedBox(height: 15,),
@@ -108,11 +108,11 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                 visible: _getTaskStatusCountProgress == false ,
                 replacement: Center(child: CircularProgressIndicator()),
 
-                child: ListView.separated(//separated deya hoiche bcz niche o same listview.builder er kaj ache tai extra kore jate niche use nah hoi tai
+                child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: _taskStatusCountList.length,
                     itemBuilder: (context,index){
-                    return TaskCountByStatus(title: _taskStatusCountList[index].status, count: _taskStatusCountList[index].count);//widget make korse reuse hocce next page e tai//index+ means index0+5 theke start
+                    return TaskCountByStatus(title: _taskStatusCountList[index].status, count: _taskStatusCountList[index].count);
                     },
                   separatorBuilder: (context,index){
                     return SizedBox(width: 4,);
@@ -134,7 +134,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                          _getAllNewTask();
                          _getAllTaskCount();
                       },
-                    );//TaskCars ekta widget make korsi
+                    );
                   },
                   itemCount: _newTaskList.length,
                   itemBuilder:(context,index){
