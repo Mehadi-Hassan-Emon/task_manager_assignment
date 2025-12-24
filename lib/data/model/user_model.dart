@@ -7,8 +7,8 @@
 // "createdDate":"2025-10-02T06:21:41.011Z"},
 // "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjU4OTMwMDksImRhdGEiOiJmY2JiYXJjYUBnbWFpbC5jb20iLCJpYXQiOjE3NjU4MDY2MTB9.LQydpKk7Z_JcukcSEqPOEay0TGk-M3kAqYquUx3AAMY"}
 
-//usermodel ta amra copy kore covert koreo ante pari but ekhane ami skhar jonno UserModel ta make kora sikhtsi
-class UserModel{//datar model make korsi
+
+class UserModel{
   final String id;
   final String email;
   final String firstName;
@@ -17,7 +17,7 @@ class UserModel{//datar model make korsi
   final String photo;
 
 
-  UserModel({//constructor make korsi datar
+  UserModel({
     required this.id,
     required this.email,
     required this.firstName,
@@ -27,19 +27,19 @@ class UserModel{//datar model make korsi
 
   });
 
- factory UserModel.fromjson(Map<String,dynamic> jsonData){//Usermodel er data gula use kortaasi
+ factory UserModel.fromjson(Map<String,dynamic> jsonData){
     return UserModel(
-        id: jsonData['_id'], //_id ta console e api eibabe dise
+        id: jsonData['_id'], 
         email: jsonData['email'],
         firstName: jsonData['firstName'],
         lastName: jsonData['lastName'],
         mobile: jsonData['mobile'],
-        photo: jsonData['photo'] ?? '',//photo ashle photo nibe na ashle empty
+        photo: jsonData['photo'] ?? '',
 
 
     );
   }
-  Map<String,dynamic>toJson(){//data gula pass kortasi toJson diye
+  Map<String,dynamic>toJson(){
    return {
      "id":id,
      "email":email,
@@ -53,4 +53,4 @@ class UserModel{//datar model make korsi
   }
 
 }
-//logout,calogin,add new task screen
+//logout,alogin,add new task screen
