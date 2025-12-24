@@ -17,18 +17,18 @@ class ForgetPasswordVerifyOtpScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 150,),
                 Text('PIN Verification',
-                  style: Theme.of(context).textTheme.titleLarge,//font boro kora// (TextTheme class) website e ache kibabe text boro kora jai
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 7,),
                 Text('A 6 digits OTP sent to your email Address',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.grey,
-                  ),//font boro kora// (TextTheme class) website e ache kibabe text boro kora jai
+                  ),
                 ),
                 const SizedBox(height: 10,),
 
 
-                PinCodeTextField(//verify er jonno "pin code fields" theke redme code ta paste korse
+                PinCodeTextField(
 
                   length: 6,
                   keyboardType: TextInputType.number,
@@ -60,7 +60,7 @@ class ForgetPasswordVerifyOtpScreen extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      RichText(          //multiple text and text color neya jai
+                      RichText(          
                           text: TextSpan(
                               text: 'Already have an acoount? ',
                               children: [
