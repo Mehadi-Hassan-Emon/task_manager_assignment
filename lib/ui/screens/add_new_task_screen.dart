@@ -37,12 +37,12 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 const SizedBox(height: 20,),
                 TextFormField(
                   controller: titleController,
-                  maxLines: 6,          //////////textfield er sixe boro kora
+                  maxLines: 6,          
                   decoration: InputDecoration(
                     hintText: 'Title',
                   ),
                     validator: (
-                        String ? value) { //validator use kore input check kore null mane khali kina
+                        String ? value) { 
                       if (value == null || value.isEmpty) {
                         return 'please enter title';
                       }
@@ -56,7 +56,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                     hintText: 'Description',
                   ),
                     validator: (
-                        String ? value) { //validator use kore input check kore null mane khali kina
+                        String ? value) { 
                       if (value == null || value.isEmpty) {
                         return 'please enter Description';
                       }
@@ -99,7 +99,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
     if(response.isSuccess){
       _clearField();
       Navigator.pushNamedAndRemoveUntil(context, 'NavBar',(predicate)=>false);
-      showSnackBarMessage(context,'New task added');//wifdget make kora ache  reuse er jonno
+      showSnackBarMessage(context,'New task added');
 
     }else{
       showSnackBarMessage(context,response.errorMessage!);
